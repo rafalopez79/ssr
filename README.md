@@ -8,4 +8,6 @@ Basic Steganography.
 ##Usage
 
 SSRCoder.encode ecodes the message into an ARGB image.
+
+
 SSRCoder.decode decodes the message stored into an ARGB image.
