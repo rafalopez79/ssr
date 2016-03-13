@@ -1,4 +1,7 @@
-#SSR SteganoSaurus Rex
+#SSR 
+
+##Steganosaurus Rex
+
 
 Basic Steganography. 
 - Saves a byte array into a PNG image using the least significative bits of each pixel.
