@@ -9,7 +9,7 @@
 Basic Steganography. 
 - Saves a byte array into a PNG image using the least significative bits of each pixel.
 - It requires lossless compression (PNG).
-- It needs an image with as many as pixels as the message length plus 12.
+- It needs an image with as many as pixels as the message length plus 12 bytes.
 
 ##Usage
 
