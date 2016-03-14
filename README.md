@@ -2,6 +2,9 @@
 
 ##Steganosaurus Rex
 
+### Status
+[![Build Status](https://travis-ci.org/rafalopez79/ssr.svg?branch=master)](https://travis-ci.org/rafalopez79/ssr/)
+
 
 Basic Steganography. 
 - Saves a byte array into a PNG image using the least significative bits of each pixel.

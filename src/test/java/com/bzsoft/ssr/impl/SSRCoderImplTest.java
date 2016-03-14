@@ -26,7 +26,7 @@ public class SSRCoderImplTest {
 			final BufferedImage img = loadImage(SSRCoderImplTest.class.getClassLoader().getResourceAsStream("test.png"));
 			final SSRCoder c = new SSRCoderImpl();
 			final BufferedImage out = c.encode(img, s.getBytes());
-			ImageIO.write(out, "png", new File("D:\\testout.png"));
+			ImageIO.write(out, "png", new File("testout.png"));
 			final byte[] msg = c.decode(out);
 			System.out.println(new String(msg));
 		}
