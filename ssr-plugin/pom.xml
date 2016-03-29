@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bzsoft.ssr</groupId>
+	<artifactId>ssr-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>SSR mvn plugin</name>
+	<parent>
+		<groupId>com.bzsoft.ssr</groupId>
+		<artifactId>ssr</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+
+	<profiles>
+		<profile>
+			<id>maven-2</id>
+			<activation>
+				<file>
+					<!-- This employs that the basedir expression is only recognized by 
+						Maven 3.x (see MNG-2363) -->
+					<missing>${basedir}</missing>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-plugin-plugin</artifactId>
+						<configuration>
+							<!-- see http://jira.codehaus.org/browse/MNG-5346 -->
+							<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+						</configuration>
+						<executions>
+							<execution>
+								<id>mojo-descriptor</id>
+								<goals>
+									<goal>descriptor</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-plugin-plugin</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>3.4</version>
+				<configuration>
+					<!-- see http://jira.codehaus.org/browse/MNG-5346 -->
+					<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-descriptor</id>
+						<phase>process-classes</phase>
+					</execution>
+					<execution>
+						<id>help-descriptor</id>
+						<goals>
+							<goal>helpmojo</goal>
+						</goals>
+						<phase>process-classes</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.bzsoft.ssr</groupId>
+			<artifactId>ssr-lib</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.plugin-tools</groupId>
+			<artifactId>maven-plugin-annotations</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+        <!--  workaround -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-plugin-plugin</artifactId>
+			<version>3.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+</project>

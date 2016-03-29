@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bzsoft.ssr</groupId>
+	<artifactId>ssr-example</artifactId>
+	<packaging>jar</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>SSR example</name>
+	<parent>
+		<groupId>com.bzsoft.ssr</groupId>
+		<artifactId>ssr</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.bzsoft.ssr</groupId>
+				<artifactId>ssr-plugin</artifactId>
+				<version>0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>ssr</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+				    <inputFile>src/main/conf/image.png</inputFile>
+				    <outputFile>src/main/conf/imageOut.png</outputFile>
+				    <files>
+				        <file>src/main/conf/test1.properties</file>
+				        <file>src/main/conf/test2.properties</file>
+				    </files>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.bzsoft.ssr</groupId>
+			<artifactId>ssr-plugin</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <version>3.2.6.RELEASE</version>
+		</dependency>
+		
+	</dependencies>
+</project>
